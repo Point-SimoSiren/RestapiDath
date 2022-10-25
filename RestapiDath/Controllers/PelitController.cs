@@ -19,6 +19,23 @@ namespace RestapiDath.Controllers
             return Ok(pelit);
         }
 
+
+        // Haku pelin nimellä
+        [HttpGet]
+        [Route("{haku}")]
+        public ActionResult GetGamesByName(string haku)
+        {
+            // Hakutermi sisältyy pelin nimeen:
+            var pelit = db.Pelits.Where(p => p.Nimi.ToLower().Contains(haku.ToLower()));
+
+            // Täydellinen match olisi puolestaan:
+            // var peli = db.Pelits.Where(p => p.Nimi == haku).FirstOrDefault();
+
+
+            return Ok(pelit);
+        }
+
+
         // Uuden pelin lisääminen
         [HttpPost]
         public ActionResult AddNew([FromBody] Pelit p)
