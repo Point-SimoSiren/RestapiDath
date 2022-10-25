@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestapiDath", "RestapiDath\RestapiDath.csproj", "{DC552244-4C80-42CE-8816-50280BA85D3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC552244-4C80-42CE-8816-50280BA85D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC552244-4C80-42CE-8816-50280BA85D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC552244-4C80-42CE-8816-50280BA85D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC552244-4C80-42CE-8816-50280BA85D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {979AC4FA-8B3F-4A54-984F-9C5CF3978EB9}
+	EndGlobalSection
+EndGlobal
