@@ -57,11 +57,7 @@ namespace RestapiDath.Models
 
                 entity.Property(e => e.Tekijä).HasMaxLength(50);
 
-                entity.HasOne(d => d.Genre)
-                    .WithMany(p => p.Pelits)
-                    .HasForeignKey(d => d.GenreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Pelit_Genret");
+               // Tästä poistettu roskaa
             });
 
             OnModelCreatingPartial(modelBuilder);

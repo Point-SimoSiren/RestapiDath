@@ -11,6 +11,5 @@ namespace RestapiDath.Models
         public int? Julkaisuvuosi { get; set; }
         public string? Tekijä { get; set; }
 
-        public virtual Genret Genre { get; set; } = null!;
     }
 }
