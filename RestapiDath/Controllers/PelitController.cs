@@ -20,6 +20,21 @@ namespace RestapiDath.Controllers
         }
 
 
+        // Pelin haku genre id:n mukaan
+        [HttpGet]
+        [Route("genreid/{genreId}")]
+        public ActionResult GetByCategoryId(int genreId)
+        {
+            if (genreId > 0)
+            {
+                var pelit = db.Pelits.Where(p => p.GenreId == genreId).ToList();
+                return Ok(pelit);
+            }
+
+            return BadRequest("Genre id pitää olla kokonaisluku");
+        }
+
+
         // Haku pelin nimellä
         [HttpGet]
         [Route("{haku}")]
@@ -29,7 +44,7 @@ namespace RestapiDath.Controllers
             var pelit = db.Pelits.Where(p => p.Nimi.ToLower().Contains(haku.ToLower()));
 
             // Täydellinen match olisi puolestaan:
-            // var peli = db.Pelits.Where(p => p.Nimi == haku).FirstOrDefault();
+            // var peli = db.Pelits.Where(p => p.Nimi.ToLower() == haku.ToLower()).FirstOrDefault();
 
 
             return Ok(pelit);
@@ -40,9 +55,18 @@ namespace RestapiDath.Controllers
         [HttpPost]
         public ActionResult AddNew([FromBody] Pelit p)
         {
-            db.Pelits.Add(p);
-            db.SaveChanges();
-            return Ok("Lisättiin uusi peli: " + p.Nimi);
+          
+                try
+                {
+                    db.Pelits.Add(p);
+                    db.SaveChanges();
+                    return Ok("Lisättiin uusi peli: " + p.Nimi);
+                }
+                catch (Exception e)
+                {
+                    return BadRequest("Virhe. Lue lisää tästä: " + e.Message);
+                }
+            
         }
 
     }
