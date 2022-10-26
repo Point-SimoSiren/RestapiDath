@@ -69,5 +69,34 @@ namespace RestapiDath.Controllers
             
         }
 
+        // Pelin poistaminen
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult Remove(int id)
+        {
+            var poistettavaPeli = db.Pelits.Find(id);
+            if (poistettavaPeli != null)
+                {
+
+                    try
+                    {
+                        db.Pelits.Remove(poistettavaPeli);
+                        db.SaveChanges();
+                        return Ok("Poistettiin peli: " + poistettavaPeli.Nimi);
+                    }
+                    catch(Exception e)
+                    {
+                    return BadRequest($"Poistamisessa tapahtui virhe: {e.Message} - {e.InnerException}");
+                    }
+                }
+            else {
+                //return NotFound("Peliä id:llä " + id + " ei löydy.");
+                // Uudempi tapa liittää merkkijonoon muuttuja-arvoja
+                return NotFound($"Peliä id:llä {id} ei löydy.");
+
+            }
+
+        }
+
     }
 }
