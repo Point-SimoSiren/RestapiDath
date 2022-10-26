@@ -106,12 +106,19 @@ namespace RestapiDath.Controllers
             var muokattavaPeli = db.Pelits.Find(id);
             if (muokattavaPeli != null)
             {
-                muokattavaPeli.Nimi = peli.Nimi;
-                muokattavaPeli.Tekijä = peli.Tekijä;
-                muokattavaPeli.Julkaisuvuosi = peli.Julkaisuvuosi;
-                muokattavaPeli.GenreId = peli.GenreId;
-                db.SaveChanges();
-                return Ok($"Muokattiin peliä {muokattavaPeli.Nimi} ");
+                try
+                {
+                    muokattavaPeli.Nimi = peli.Nimi;
+                    muokattavaPeli.Tekijä = peli.Tekijä;
+                    muokattavaPeli.Julkaisuvuosi = peli.Julkaisuvuosi;
+                    muokattavaPeli.GenreId = peli.GenreId;
+                    db.SaveChanges();
+                    return Ok($"Muokattiin peliä {muokattavaPeli.Nimi} ");
+                }
+                catch(Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
             }
             else
             {
