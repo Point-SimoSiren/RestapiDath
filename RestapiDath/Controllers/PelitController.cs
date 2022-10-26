@@ -98,5 +98,26 @@ namespace RestapiDath.Controllers
 
         }
 
+        // Pelin tietojen muokkaaminen
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult EditGame(int id, [FromBody] Pelit peli)
+        {
+            var muokattavaPeli = db.Pelits.Find(id);
+            if (muokattavaPeli != null)
+            {
+                muokattavaPeli.Nimi = peli.Nimi;
+                muokattavaPeli.Tekijä = peli.Tekijä;
+                muokattavaPeli.Julkaisuvuosi = peli.Julkaisuvuosi;
+                muokattavaPeli.GenreId = peli.GenreId;
+                db.SaveChanges();
+                return Ok($"Muokattiin peliä {muokattavaPeli.Nimi} ");
+            }
+            else
+            {
+                return NotFound($"Peliä id:llä {id} ei löytynyt.");
+            }
+        }
+
     }
 }
